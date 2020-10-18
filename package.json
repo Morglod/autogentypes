@@ -1,0 +1,20 @@
+{
+  "name": "autogentypes",
+  "version": "1.0.5",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "morglod",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/glob": "^7.1.3",
+    "joi": "^17.2.1",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.3"
+  },
+  "dependencies": {
+    "glob": "^7.1.6"
+  }
+}
