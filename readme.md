@@ -8,8 +8,8 @@ Currently supports:
 
 Check example project in [src/example](./src/example)
 
-If you use joi: `npm i joi @hapi/joi@npm:joi`  
-If you use schema4 `npm i json-joi-converter`
+If you use joi->schema4:  
+`npm i joi @hapi/joi@npm:joi json-joi-converter`
 
 ## Idea
 
