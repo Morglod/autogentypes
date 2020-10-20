@@ -1,7 +1,5 @@
 import * as FS from 'fs';
 import { InFileConfig } from './in-file-config';
-import { joiJsModuleToSchema4Code } from './joi-to-schema4';
-import { joiJsModuleToTsTypesCode } from './joi-to-ts/joi-to-ts';
 import { prettyFormat } from './pretty-format';
 
 export type ConvertFromVariants = 'joi';
@@ -37,7 +35,9 @@ export function convertFileStr(inputPath: string, opts?: Partial<ConvertFileStrO
     ];
 
     if (convertFrom.includes('joi') && convertTo.includes('ts')) {
-        const result = joiJsModuleToTsTypesCode(inputModule, opts);
+        // lazy import coz of optional dependencies
+        const jtot = require('./joi-to-ts/joi-to-ts');
+        const result = jtot.joiJsModuleToTsTypesCode(inputModule, opts);
         if (result.warningMessages) {
             console.warn(result.warningMessages.join('\n'));
         }
@@ -49,7 +49,9 @@ export function convertFileStr(inputPath: string, opts?: Partial<ConvertFileStrO
     }
 
     if (convertFrom.includes('joi') && convertTo.includes('schema4')) {
-        const result = joiJsModuleToSchema4Code(inputModule, opts);
+        // lazy import coz of optional dependencies
+        const jtoschema = require('./joi-to-schema4');
+        const result = jtoschema.joiJsModuleToSchema4Code(inputModule, opts);
         if (result.warningMessages) {
             console.warn(result.warningMessages.join('\n'));
         }
