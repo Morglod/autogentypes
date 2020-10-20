@@ -1,3 +1,5 @@
 import { convertGlobSync } from "../cli";
 
-convertGlobSync('src/**/joitypes-*.js');
+convertGlobSync('src/**/*.gen.js', {
+    outputFilePath: (orig, prefer) => prefer.replace('.gen.ts', '.ts')
+});

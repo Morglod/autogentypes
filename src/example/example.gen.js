@@ -20,8 +20,7 @@ export const YandexParserJob = Joi.object().keys({
     useCache: Joi.boolean(),
 
     // new
-    /** utc ms date */
-    createdAt: Joi.number(),
+    createdAt: Joi.number().description('utc ms date'),
     importXLS: Joi.alternatives(
         Joi.object({
             filePath: Joi.string(),
@@ -33,8 +32,8 @@ export const YandexParserJob = Joi.object().keys({
     searchTextJsonFilePath: Joi.alternatives(Joi.string(), Joi.valid(false)),
     productUrlJsonFilePath: Joi.alternatives(Joi.string(), Joi.valid(false)),
 
-    testSearchEntries?: Joi.array().items(Joi.string()),
-    testProductUrlEntries?: Joi.array().items(Joi.string()),
+    testSearchEntries: Joi.array().items(Joi.string()),
+    testProductUrlEntries: Joi.array().items(Joi.string()),
 
     // progress
     parseTimeSpentSec: Joi.number(),
@@ -53,8 +52,7 @@ export const YandexParserJob = Joi.object().keys({
     builtOutputFilePath: Joi.string().empty(),
 
     // finished or failed
-    /** utc ms date */
-    endedAt: Joi.number().empty(),
+    endedAt: Joi.number().empty().description('utc ms date'),
 
     failedOutputLog: Joi.string(),
 }).options({
